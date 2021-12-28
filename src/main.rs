@@ -1,35 +1,21 @@
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
-
 fn main() {
-    println!("Guess the number!");
+    let mut x = 5;
+    println!("The value of x is: {}", x);
 
-    let secret_number = rand::thread_rng().gen_range(1..101);
+    x = 6;
+    println!("The value of x is: {}", x);
 
-    loop {
-        println!("Please input your guess.");
+    let spaces = "     ";
+    println!("{}", spaces.len());
 
-        let mut guess = String::new();
+    // shadowing
+    let z = 5;
+    let z = z + 1;
 
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("You guessed: {}", guess);
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You guessed it right!");
-                break;
-            }
-        }
+    {
+        let z = z * 2;
+        println!("the value of z in the inner scope is: {}", z);
     }
+
+    println!("the value of z is: {}", z);
 }
