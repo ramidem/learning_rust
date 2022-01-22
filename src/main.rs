@@ -1,30 +1,74 @@
-use std::time::{SystemTime, UNIX_EPOCH};
-
 fn main() {
-    println!("Hello, World!");
+    // LOOP
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {}", count);
 
-    // let y = {
-    //     let x = 3;
-    //     x + 1;
-    // };
+        let mut remaining = 10;
 
-    // println!("value of y is: {}", y);
+        loop {
+            println!("remaining = {}", remaining);
 
-    println!("{} of {:b} people know binary, the other half does not.", 1, 2);
+            if remaining == 9 {
+                break;
+            }
 
-    get_time();
-    give_me_measurement(3, "hrs");
-}
+            if count == 2 {
+                break 'counting_up;
+            }
 
-fn get_time() {
-    let start = SystemTime::now();
-    let since_epoch = start
-        .duration_since(UNIX_EPOCH)
-        .expect("The time went backwards.");
+            remaining -= 1;
+        }
 
-    println!("The time since UNIX_EPOCH: {:?}", since_epoch);
-}
+        count += 1;
+    }
 
-fn give_me_measurement(n: i32, unit_label: &str) {
-    println!("The measurement is: {}{}", n, unit_label);
+    println!("End count = {}", count);
+
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is: {}", result);
+
+    // WHILE
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{}!", number);
+
+        number -= 1;
+    }
+
+    println!("Lift off!");
+
+    // FOR
+    let collection = [10, 20, 30, 40, 50];
+    let mut index = 0;
+
+    // with WHILE
+    while index < 5 {
+        println!("the value at index {} is: {}", index, collection[index]);
+
+        index += 1;
+    }
+
+    println!("===");
+
+    // with FOR
+    for (i, item) in collection.iter().enumerate() {
+        println!("the value at index {} is: {}", i, item);
+    }
+
+    // LIFT OFF with FOR
+    for number in (1..11).rev() {
+        println!("{}!", number);
+    }
+    println!("LIFT OFF!!!");
 }

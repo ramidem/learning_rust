@@ -260,3 +260,19 @@ fn main() {
     println!("{}", 1); // comment
 }
 ```
+
+## 5. Control Flow
+
+```rust
+fn main() {
+    let number = 3;
+
+    // this should evaluate to bool
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false");
+    }
+}
+```
+
