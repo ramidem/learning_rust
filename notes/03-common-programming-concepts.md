@@ -249,4 +249,14 @@ fn main() {
 }
 ```
 
+## 4. Comments
 
+```rust
+// This is a comment
+
+fn main() {
+    // comment
+    // comment
+    println!("{}", 1); // comment
+}
+```
