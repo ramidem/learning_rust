@@ -1,22 +1,30 @@
+use std::time::{SystemTime, UNIX_EPOCH};
+
 fn main() {
-    // annotate parsed value
-    let guess: u32 = "42".parse().expect("not a number");
-    println!("{}", guess);
+    println!("Hello, World!");
 
-    println!("{}", 98_222);
-    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    // let y = {
+    //     let x = 3;
+    //     x + 1;
+    // };
 
-    // Destructuring
-    let (x, y, z) = tup;
+    // println!("value of y is: {}", y);
 
-    println!("x {}, y {}, z {}", x, y, z);
+    println!("{} of {:b} people know binary, the other half does not.", 1, 2);
 
-    // Dot notation
-    let five_hund = tup.0;
-    let six_four = tup.1;
-    let one = tup.2;
+    get_time();
+    give_me_measurement(3, "hrs");
+}
 
-    println!("{}", five_hund);
-    println!("{}", six_four);
-    println!("{}", one);
+fn get_time() {
+    let start = SystemTime::now();
+    let since_epoch = start
+        .duration_since(UNIX_EPOCH)
+        .expect("The time went backwards.");
+
+    println!("The time since UNIX_EPOCH: {:?}", since_epoch);
+}
+
+fn give_me_measurement(n: i32, unit_label: &str) {
+    println!("The measurement is: {}{}", n, unit_label);
 }

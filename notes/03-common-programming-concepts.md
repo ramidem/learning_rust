@@ -157,4 +157,96 @@ let first = a[0];
 let second = a[1];
 ```
 
+## 3 Functions
+
+- most prevalent in Rust code
+- `main` is one of the most important functions and is the entry point of many
+  programs
+- uses *snake_case* as the conventional style for functions and variable names
+
+```rust
+fn main() {
+    println!("Hello, World!");
+
+    give_me_measurement(3, "hrs");
+}
+```
+
+### Parameters
+
+- When a has parameters, you can provide it with concrete values for those
+  parameters.
+- _parameters_ and _arguments_ can be used interchangeably.
+- types of parameters must be declared deliberately.
+
+```rust
+fn give_me_measurement(n: i32, unit_label: &str) {
+    println!("The measurement is: {}{}", n, unit_label);
+}
+```
+
+### Statements and Expressions
+
+> Rust is primarily an expression language. This means that most forms of
+> value-producing or effect-causing evaluation are directed by the uniform
+> syntax category of expressions.
+
+Function bodies are made up of a series of statements optionally ending in an
+expression.
+
+_Statements_ are intructions that perform some action and do not return a value.
+
+```rust
+fn main() {
+    let y = 6;
+
+    // Statements do not return values
+    // Therefore, we can not assign a `let` to another variable
+    // let x = (let y = 6); will throw an error
+}
+```
+
+_Expressions_ evaluate to a resulting value.
+
+```rust
+fn main() {
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    println!("The value of y is: {}", y);
+}
+```
+
+Expressions:
+- `6 + 6` evaluates to `12`
+- Expressions can be part of statements;
+  - `6` is an expression in the statement `let y = 6;`
+- Calling a function is an expression
+- Calling a macro is an expression
+- a new scope block created with curly brackets is an expression
+
+> Expressions do not include ending semicolons. Doing so will turn it into a
+> statement and will not return a value. eg `x + 1`
+
+### Functions with Return Values
+
+- We do not name return values, but we do declare their type after an arrow (`->`)
+- You can return early from a function with `return`
+
+```rust
+fn five() -> i32 {
+    // expression
+    // no semicolon because we want it to return
+    5
+}
+
+fn main() {
+    let x = five();
+
+    println!("The value of x is: {}", x);
+}
+```
+
 
